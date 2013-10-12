@@ -8,6 +8,7 @@
 
 var lessMiddleware = require('less-middleware');
 var express = require('express');
+var bitcoin = require('bitcoin')
 var app = express();
 var pg = require('pg');
 
@@ -45,6 +46,11 @@ app.get('/newcause', function (req,res){
   res.render('newcause.jade', {title : 'Add a Cause', layout:false})
 })
 
+app.post('/newcause', function (req,res){
+  res  
+})
+
+
 app.get('/causes', function (req,res){
   res.render('causepage.jade', {title : 'Causes', layout:false})
 })
@@ -61,13 +67,21 @@ app.get('/about', function (req,res){
   res.render('about.jade', {title : 'About Us'})
 })
 
+var tzedakahbitsclient = new bitcoin.Client({
+  host: 'localhost',
+  port: 8332,
+  user: 'username',
+  pass: 'password'
+});
+
+
 //Connect to Database
 var connectionString = 'pg://@localhost/tzedakahbits';
 
-pg.connect(connectionString, function(err, client, done){
+/*pg.connect(connectionString, function(err, client, done){
   if(err) throw err;
   client.query( 'INSERT INTO causes (cause_id, cause_name) values (0, $$ChabadNP$$);'
   );
-});
+});*/
 
 app.listen(4900)
