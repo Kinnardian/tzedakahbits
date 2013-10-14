@@ -4,8 +4,6 @@
  * Module dependencies
  */
 
-
-
 var lessMiddleware = require('less-middleware');
 var express = require('express');
 var bitcoin = require('bitcoin')
@@ -35,6 +33,7 @@ app.configure( function(){
     compress: true
   }))
   app.use(express.static(__dirname + '/public'))
+  app.use(express.bodyParser())
 })
 
 app.get('/', function (req, res) {
@@ -47,8 +46,9 @@ app.get('/newcause', function (req,res){
 })
 
 app.post('/newcause', function (req,res){
-  res  
-})
+  console.log('who');
+  console.log(req.body);
+});
 
 
 app.get('/causes', function (req,res){

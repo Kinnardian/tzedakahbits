@@ -4,12 +4,11 @@ block main
     .container
         h1 Add a new Cause
         .span3
-            form
+            form(action='newcause', method='post')
                 
-                    input(type='text') CauseName
-                    input(type='text') Image
-                    input(type='text') Organization
-                    input(type='text') Goal
+                    input(type='text', placeholder='CauseName', name='causename') CauseName
+                    input(type='text', placeholder='Organization', name='Organization') Organization
+                    input(type='text', placeholder='Goal', name='Goal') Goal
                     br
-                    input(type='text') Sponsor
-                    a.btn.btn-info Change the world!
+                    input(type='text', placeholder='Sponsor', name='sponsor') Sponsor
+                    input(type='submit') a.btn.btn-info Change the world!
