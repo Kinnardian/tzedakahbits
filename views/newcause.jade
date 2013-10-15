@@ -6,9 +6,16 @@ block main
         .span3
             form(action='newcause', method='post')
                 
-                    input(type='text', placeholder='CauseName', name='causename') CauseName
-                    input(type='text', placeholder='Organization', name='Organization') Organization
-                    input(type='text', placeholder='Goal', name='Goal') Goal
+                    p CauseName
+                    input(type='text', placeholder='CauseName', name='causename') 
+                    p Goal
+                    input(type='text', placeholder='Goal', name='Goal')
                     br
+                    p Organization
+                    input(type='text', placeholder='Organization', name='Organization')  
+                    p Is there a sponsor?
                     input(type='text', placeholder='Sponsor', name='sponsor') Sponsor
+                    p Your Email* 
+                    input(type='text', placeholder='Your Email', name='submitterEmail') 
+                    p *Optional
                     input(type='submit') a.btn.btn-info Change the world!

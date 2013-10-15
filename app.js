@@ -36,6 +36,11 @@ app.configure( function(){
   app.use(express.bodyParser())
 })
 
+//Connect to Database
+var connectionString = 'pg://@localhost/tzedakahbits';
+
+
+
 app.get('/', function (req, res) {
   res.render('index.jade', { title : 'Home' })
 
@@ -46,10 +51,27 @@ app.get('/newcause', function (req,res){
 })
 
 app.post('/newcause', function (req,res){
-  console.log('who');
+  console.log(req)
   console.log(req.body);
+  
+  var g;
+  
+  var r = [];
+  
+  for (g in req.body)
+  {
+    r[g]=req.body[g];
+    console.log('r[g] is ' + r[g]);
+  }
+  
+  client = pg.connect(connectionString, function(err, client, done){
+    if(err) console.log(err);
+    client.query('INSERT INTO causes (cause_name, goal, organization, sponsor, submitter) VALUES ($1,$2,$3,$4,$5)', r, function(err){
+      console.log('This is r' + r)
+      if (err) console.log(err);
+    });    
+  });
 });
-
 
 app.get('/causes', function (req,res){
   res.render('causepage.jade', {title : 'Causes', layout:false})
@@ -75,13 +97,6 @@ var tzedakahbitsclient = new bitcoin.Client({
 });
 
 
-//Connect to Database
-var connectionString = 'pg://@localhost/tzedakahbits';
 
-/*pg.connect(connectionString, function(err, client, done){
-  if(err) throw err;
-  client.query( 'INSERT INTO causes (cause_id, cause_name) values (0, $$ChabadNP$$);'
-  );
-});*/
 
 app.listen(4900)
