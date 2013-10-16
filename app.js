@@ -37,6 +37,15 @@ app.configure( function(){
   app.use(express.bodyParser())
 })
 
+
+var btcclient = new bitcoin.Client({
+  host: 'localhost',
+  port: 8332,
+  user: 'username',
+  pass: 'password',
+
+});
+
 //Connect to Database
 var connectionString = 'pg://@localhost/tzedakahbits';
 
@@ -65,7 +74,7 @@ app.post('/newcause', function (req,res){
     console.log('r[g] is ' + r[g]);
   }
   
-  client = pg.connect(connectionString, function(err, client, done){
+  client = pg.connect(connectionString, function(err, client, done, r){
     if(err) console.log(err);
     client.query('INSERT INTO causes (cause_name, goal, organization, sponsor, submitter) VALUES ($1,$2,$3,$4,$5)', r, function(err){
       console.log('This is r' + r)
@@ -74,13 +83,29 @@ app.post('/newcause', function (req,res){
   });
 });
 
+
 app.get('/causes', function (req,res){
   res.render('causepage.jade', {title : 'Causes', layout:false})
+})
+
+app.post('/donatecause', function (req,res){
+
+  console.log(req.body);
+  btcclient.getNewAddress( 2, function(err, address){
+    console.log(address);
+  });
+
+  btcclient.getBalance('*', 6, function(err, balance) {
+    if (err) return console.log(err);
+    console.log('Balance:', balance);
+  });
+
 })
 
 app.get('/donate', function (req,res){
   res.render('donate.jade', {title : 'Donate'})
 })
+
 
 app.get('/bitcoin', function (req,res){
   res.render('bitcoin.jade', {title : 'What is bitcoin?'})
@@ -89,13 +114,6 @@ app.get('/bitcoin', function (req,res){
 app.get('/about', function (req,res){
   res.render('about.jade', {title : 'About Us'})
 })
-
-var tzedakahbitsclient = new bitcoin.Client({
-  host: 'localhost',
-  port: 8332,
-  user: 'username',
-  pass: 'password'
-});
 
 
 
