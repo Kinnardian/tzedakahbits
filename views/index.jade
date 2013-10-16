@@ -7,13 +7,13 @@ block main
         .row-fluid
             .span2
             #cause1.cause.span2
-                p First cause sl;adjns;flnsdlfn
+                include /partials/cause.jade
             .span1
             #cause2.cause.span2
-                p Second cause asfdgadfg
+                include /partials/cause.jade
             .span1
             #cause3.cause.span2
-                block caused
+                include /partials/cause.jade
                 
             .span3
 
@@ -24,13 +24,16 @@ block main
         .row-fluid
             .span2
             .span2
-                p This cause
+                include /partials/cause.jade
+
+                
             .span1
             .span2
-                p That cause
+                include /partials/cause.jade
             .span1
+            
             .span2
-                p 6th Cause
+                include /partials/cause.jade
             .span2
 block caused
     ul

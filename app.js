@@ -21,6 +21,7 @@ var pg = require('pg');
 app.set('views', __dirname + '/views')
 app.set('view engine', 'jade')
 app.set('view options', { layout: false });
+app.locals.basedir = '/Users/Kinnard/Desktop/Projects/tzedakahbits/';
 
 
 app.configure( function(){
