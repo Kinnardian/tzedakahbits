@@ -1,11 +1,17 @@
 extends layout
 block cause
-	ul
-		li CauseName
-		li Image
-		li Organization
-		li Raised
-		li Goal
-		li Sponsor
-		li 
-			button(value="donate")
+	img(src="/img/TzedakahLogo.png")
+	
+	.container
+	
+		ul
+			li CauseName #{rows.cause_name} 
+			li Image
+			li Organization #{rows.organization}
+			li Raised 
+			li Goal #{rows.goal}
+			li Sponsor #{rows.sponsor}
+			p Address #{address}
+			li 
+				button(value="donate")
+			
