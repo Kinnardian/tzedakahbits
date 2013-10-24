@@ -34,9 +34,9 @@ app.configure( function(){
 
 var btcclient = new bitcoin.Client({
   host: 'localhost',
-  port: 8332,
-  user: 'kinnard',
-  pass: 'randomassword',
+  port: 8333,
+  user: 'michael',
+  pass: 'shortassword',
 
 });
 
@@ -76,7 +76,11 @@ app.post('/newcause', function (req,res){
       btcclient.getNewAddress(function(err,address){
         if (err) return console.log(err);
         console.log('New Address' + address);
-        //client.query('INSERT INTO causes VALUES $1')
+        var s = []
+        s.push(address, result.rows[0].cause_id);
+        client.query('UPDATE causes SET address = ($1) WHERE cause_id = $2', s, function(err)
+          {if (err) console.log(err);}
+        );
         res.render('causepage.jade', {rows: result.rows[0], address: address});
         return address;
         
@@ -91,9 +95,20 @@ app.post('/newcause', function (req,res){
 });
 
 
+
 app.get('/causes', function (req,res){
-  res.render('causepage.jade', {title : 'Causes', layout:false});
+  client = pg.connect(connectionString, function(err, client, done){
+    if(err) console.log(err);
+    
+    client.query('SELECT * FROM causes', function(err, result){
+      //console.log(result.rows);
+      res.render('pageofcauses.jade', {title : 'Causes', rows: result.rows});
+    }); 
+  
+  });
+
 });
+
 
 app.post('/donatecause', function (req,res){
 

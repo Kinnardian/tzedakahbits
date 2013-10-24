@@ -1,0 +1,8 @@
+form(action='/donatecause', method='POST')
+    button.btn-mini.btn-primary.pull-right(type='submit') Donate
+p Cause: #{rows[i].cause_name}
+p Organization: #{rows[i].organization}
+p Goal: #{rows[i].goal} BTC
+br
+.progress
+    .bar(style="width: 67%;")
