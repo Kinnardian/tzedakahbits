@@ -7,12 +7,15 @@ block main
         .row-fluid
             .span2
             #cause1.cause.span2
+                - var i= rows.length-1
                 include /partials/cause.jade
             .span1
             #cause2.cause.span2
+                - var i=1
                 include /partials/cause.jade
             .span1
             #cause3.cause.span2
+                - var i=2
                 include /partials/cause.jade
                 
             .span3
@@ -22,21 +25,24 @@ block main
         .row-fluid
             .span12.do
                 img.center(src="/img/TzedakahLogo.png")
-                p Donate Bitcoin to your favorite Jewish Charity
+                p Donate Bitcoin to your favorite Jewish Charities 
         span(style='font-size:20pt;')
             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         .row-fluid
             .span2
             .span2
+                - var i=3
                 include /partials/cause.jade
 
                 
             .span1
             .span2
+                - var i=4
                 include /partials/cause.jade
             .span1
 
             .span2
+                - var i=5
                 include /partials/cause.jade
             .span2
 block caused

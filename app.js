@@ -6,14 +6,14 @@
 
 var lessMiddleware = require('less-middleware');
 var express = require('express');
-var bitcoin = require('bitcoin')
+var bitcoin = require('bitcoin');
 var app = express();
 var pg = require('pg');
 
 
 
-app.set('views', __dirname + '/views')
-app.set('view engine', 'jade')
+app.set('views', __dirname + '/views');
+app.set('view engine', 'jade');
 app.set('view options', { layout: false });
 app.locals.basedir = '/Users/Kinnard/Desktop/Projects/tzedakahbits/';
 
@@ -29,7 +29,7 @@ app.configure( function(){
   }))
   app.use(express.static(__dirname + '/public'))
   app.use(express.bodyParser())
-})
+});
 
 
 var btcclient = new bitcoin.Client({
@@ -43,16 +43,45 @@ var btcclient = new bitcoin.Client({
 //Connect to Database
 var connectionString = 'pg://@localhost/tzedakahbits';
 
+var currentCauses;
+getCauses = function () {
+  
+  client = pg.connect(connectionString, function(err, client, done){
+  
+    if(err) console.log(err);
+    
+    client.query('SELECT * FROM causes', function(err, result){
+      //console.log(result.rows);
+      console.log('poo');
+      currentCauses = result.rows;
+      //console.log(currentCauses);
+      
+      
+    });
+  
+  });
+return currentCauses;
+};
+
+getCauses();
+
+
+
+
+
+
 
 
 app.get('/', function (req, res) {
-  res.render('index.jade', { title : 'Home' })
+  res.render('index.jade', { title : 'Home', rows: currentCauses })
 
-})
+});
 
 app.get('/newcause', function (req,res){
   res.render('newcause.jade', {title : 'Add a Cause', layout:false})
-})
+
+  console.log(currentCauses);
+});
 
 app.post('/newcause', function (req,res){
   
@@ -97,25 +126,15 @@ app.post('/newcause', function (req,res){
 
 
 app.get('/causes', function (req,res){
-  client = pg.connect(connectionString, function(err, client, done){
-    if(err) console.log(err);
-    
-    client.query('SELECT * FROM causes', function(err, result){
-      //console.log(result.rows);
-      res.render('pageofcauses.jade', {title : 'Causes', rows: result.rows});
-    }); 
-  
-  });
+
+res.render('pageofcauses.jade', {title : 'Causes', rows: currentCauses});
 
 });
 
 
-app.post('/donatecause', function (req,res){
+app.post('/donatetocause', function (req,res){
 
-  console.log(req.body);
-  btcclient.getNewAddress( 2, function(err, address){
-    console.log(address);
-  });
+  console.log(req.body.cause_id);
 
   btcclient.getBalance('*', 6, function(err, balance) {
     if (err) return console.log(err);
@@ -123,6 +142,7 @@ app.post('/donatecause', function (req,res){
   });
 
 })
+
 
 app.get('/donate', function (req,res){
   res.render('donate.jade', {title : 'Donate'});
@@ -136,6 +156,8 @@ app.get('/bitcoin', function (req,res){
 app.get('/about', function (req,res){
   res.render('about.jade', {title : 'About Us'});
 });
+
+
 
 
 
