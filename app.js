@@ -65,15 +65,45 @@ return currentCauses;
 
 getCauses();
 
+var causeContainer = new Object();
+
+
+getacausebyId = function (cause_id) {
+    
+    var r = [];
+    r.push(cause_id);
+    var rows;
+    
+    return pg.connect(connectionString, function(err, client, done){
+  
+      if(err) console.log(err);
+    
+      rows = client.query('SELECT * FROM causes WHERE cause_id = $1', r, function(err, result){
+      if(err) console.log(err);
+      
+      console.log('poopoo');
+      //console.log(result.rows);
+      causeContainer.cause=result.rows;
+      console.log(causeContainer.cause)
+      
+      
+      });
+  
+    });
+};
 
 
 
+
+causeContainer.get = getacausebyId;
+//causeContainer.get(125);
 
 
 
 
 app.get('/', function (req, res) {
   res.render('index.jade', { title : 'Home', rows: currentCauses })
+  console.log(testingcandy)
 
 });
 
@@ -135,6 +165,9 @@ res.render('pageofcauses.jade', {title : 'Causes', rows: currentCauses});
 app.post('/donatetocause', function (req,res){
 
   console.log(req.body.cause_id);
+  causeContainer.get(req.body.cause_id);
+  setTimeout(console.log(causeContainer.cause),2000);
+  setTimeout(res.render('causepage.jade', {title : 'Cause', rows: causeContainer.cause[0]}), 4000);
 
   btcclient.getBalance('*', 6, function(err, balance) {
     if (err) return console.log(err);
