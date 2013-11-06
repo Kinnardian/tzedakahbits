@@ -43,6 +43,7 @@ var btcclient = new bitcoin.Client({
 //Connect to Database
 var connectionString = 'pg://@localhost/tzedakahbits';
 
+//Get Causes and load them into variable for use by the app
 var currentCauses;
 getCauses = function () {
   
@@ -62,13 +63,75 @@ getCauses = function () {
   });
 return currentCauses;
 };
-
 getCauses();
+
+
+var lastbalance;
 
 var causeContainer = new Object();
 
+getBalance = function (callback){
+  btcclient.getBalance('*', 0, function(err, balance) {
+    if (err) return console.log(err);
+    if (lastbalance != balance || typeof lastbalance == 'undefined'){
+      console.log('Last Balance:' + lastbalance);
+      lastbalance = balance;
+      updateCauses();
+    }
+    console.log('Balance:', balance);
+    
 
-getacausebyId = function (cause_id) {
+    if (typeof callback=='function') callback();
+
+  });
+};
+
+setInterval(getBalance, 2000);
+
+updateCauses = function (){
+    pg.connect(connectionString, function(err, client, done){
+      if(err) console.log(err);
+      
+      client.query('SELECT address FROM causes', function(err, result){
+      
+        if (err) console.log(err);
+        //console.log(result.rows);
+        
+        for (var i = 0; i < result.rows.length; i++) { 
+          
+          var address;
+          address = result.rows[i].address;
+          console.log(address);
+          
+          
+          ( function (addr){ btcclient.getReceivedByAddress(addr, 0, function(err,balance){
+                 
+            
+            var b = []; 
+            b = [balance, addr];
+
+            client.query('UPDATE causes set balance = ($1) where address = $2', b, function(err, result){
+              
+
+
+              if (err) console.log(err);
+              console.log(addr);
+              console.log(b);
+              var r = i;
+              console.log('i is: ' + r);
+            });
+        
+          });})(address);
+      
+        };
+
+      });
+    });
+};
+
+app.get('/caligula',updateCauses);
+
+getacausebyId = function (cause_id, callback) {
     
     var r = [];
     r.push(cause_id);
@@ -84,7 +147,8 @@ getacausebyId = function (cause_id) {
       console.log('poopoo');
       //console.log(result.rows);
       causeContainer.cause=result.rows;
-      console.log(causeContainer.cause)
+      console.log(causeContainer.cause);
+      if (typeof callback=='function') callback();
       
       
       });
@@ -93,7 +157,8 @@ getacausebyId = function (cause_id) {
 };
 
 
-
+console.log(typeof btcclient.getBalance);
+console.log(typeof btcclient.getBalance('*'));
 
 causeContainer.get = getacausebyId;
 //causeContainer.get(125);
@@ -136,16 +201,14 @@ app.post('/newcause', function (req,res){
         if (err) return console.log(err);
         console.log('New Address' + address);
         var s = []
-        s.push(address, result.rows[0].cause_id);
+        s.push(address, result.rows[0].cause_id); //why does this work?
         client.query('UPDATE causes SET address = ($1) WHERE cause_id = $2', s, function(err)
           {if (err) console.log(err);}
         );
         res.render('causepage.jade', {rows: result.rows[0], address: address});
         return address;
         
-      });
-
-      console.log('smeh! why is nothing logged' + result.rows[0].cause_id);      
+      });      
       
     
     });    
@@ -165,16 +228,21 @@ res.render('pageofcauses.jade', {title : 'Causes', rows: currentCauses});
 app.post('/donatetocause', function (req,res){
 
   console.log(req.body.cause_id);
-  causeContainer.get(req.body.cause_id);
-  setTimeout(console.log(causeContainer.cause),2000);
-  setTimeout(res.render('causepage.jade', {title : 'Cause', rows: causeContainer.cause[0]}), 4000);
+  causeContainer.get(req.body.cause_id, function(){
+    
+    res.render('causepage.jade', {title : 'Cause', rows: causeContainer.cause[0]})
+    
+    console.log(causeContainer.cause);
+    
+    btcclient.getBalance(causeContainer.cause[0].address, 0, function(err, balance) {
+      if (err) return console.log(err);
+      console.log('Balance:', balance);
+    });
 
-  btcclient.getBalance('*', 6, function(err, balance) {
-    if (err) return console.log(err);
-    console.log('Balance:', balance);
+    
   });
 
-})
+});
 
 
 app.get('/donate', function (req,res){

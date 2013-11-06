@@ -1,5 +1,7 @@
 extends layout
 block main
+
+
     img(src="/img/TzedakahLogo.png")
     .container
         h1 Add a new Cause
@@ -18,4 +20,5 @@ block main
                     p Your Email* 
                     input(type='text', placeholder='Your Email', name='submitterEmail') 
                     p *Optional
-                    input(type='submit') a.btn.btn-info Change the world!
+                    a
+                        input(type='submit').btn-primary Change the world!

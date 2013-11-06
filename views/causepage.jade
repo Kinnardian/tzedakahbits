@@ -1,17 +1,31 @@
 extends layout
 block cause
-	img(src="/img/TzedakahLogo.png")
-	
-	.container
-	
-		ul
-			li CauseName #{rows.cause_name} 
-			li Image
-			li Organization #{rows.organization}
-			li Raised 
-			li Goal #{rows.goal}
-			li Sponsor #{rows.sponsor}
-			p Address #{address}
-			li 
-				button(value="donate")
-			
+    img(src="/img/TzedakahLogo.png")
+    
+    .container
+    
+        ul
+            li CauseName: #{rows.cause_name} 
+            
+            li Organization: #{rows.organization}
+            li Goal: #{rows.goal}
+            li Raised: #{rows.balance}
+            li Sponsor: #{rows.sponsor}
+            li Address: #{rows.address}
+            
+            .progress
+                .bar(style="width: 67%;")
+            li 
+                button.btn-mini.btn-primary(value='donate', href='#donateModal', type='button', data-toggle='modal') Donate!
+     .modal.hide.fade#donateModal
+        .modal-header
+            button(type='button', data-dismiss='modal', aria-hidden='true').close
+                &times;
+            h3 Donate bitcoin to #{rows.organization}
+            p Donate via Bitcoin Address: #{rows.address}
+            p donate via QR
+            p Donate by clicking this button
+            a(href='bitcoin:#{rows.address')
+                button You're Awesome!
+
+        .modal-body   
