@@ -16,8 +16,8 @@ block cause
             .progress
                 .bar(style="width: 67%;")
             li 
-                button.btn-mini.btn-primary(value='donate', href='#donateModal', type='button', data-toggle='modal') Donate!
-     .modal.hide.fade#donateModal
+                button#donateModalToggle.btn-mini.btn-primary(value='donate', href='#donateModal', type='button', data-toggle='modal') Donate!
+     #donateModal.modal.fade
         .modal-header
             button(type='button', data-dismiss='modal', aria-hidden='true').close
                 &times;
@@ -25,7 +25,7 @@ block cause
             p Donate via Bitcoin Address: #{rows.address}
             p donate via QR
             p Donate by clicking this button
-            a(href='bitcoin:#{rows.address')
+            a(href='bitcoin:#{rows.address}')
                 button You're Awesome!
 
         .modal-body   

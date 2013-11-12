@@ -78,7 +78,7 @@ getBalance = function (callback){
       lastbalance = balance;
       updateCauses();
     }
-    console.log('Balance:', balance);
+    //console.log('Balance:', balance);
     
 
     if (typeof callback=='function') callback();
@@ -161,14 +161,14 @@ console.log(typeof btcclient.getBalance);
 console.log(typeof btcclient.getBalance('*'));
 
 causeContainer.get = getacausebyId;
-//causeContainer.get(125);
+
 
 
 
 
 app.get('/', function (req, res) {
   res.render('index.jade', { title : 'Home', rows: currentCauses })
-  console.log(testingcandy)
+  
 
 });
 

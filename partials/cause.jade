@@ -1,9 +1,11 @@
-form(action='/donatetocause', method='POST')
-    button.btn-mini.btn-primary.pull-right(type='submit') Donate
-    input(type='hidden', value='#{rows[i].cause_id}', name='cause_id') 
-p Cause: #{rows[i].cause_name}
-p Organization: #{rows[i].organization}
-p Goal: #{rows[i].goal} BTC
-br
-.progress
-    .bar(style="width: 27%;")
+
+.cause
+    form(action='/donatetocause', method='POST')
+        button.btn-mini.btn-primary.pull-right(type='submit') Donate
+        input(type='hidden', value='#{rows[i].cause_id}', name='cause_id') 
+    p.causeName Cause: #{rows[i].cause_name}
+    p Organization: #{rows[i].organization}
+    p Goal: #{rows[i].goal} BTC
+    br
+    .progress
+        .bar(style="width: 27%;")
