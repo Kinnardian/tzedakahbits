@@ -89,6 +89,7 @@ getBalance = function (callback){
 setInterval(getBalance, 2000);
 
 updateCauses = function (){
+    getCauses();
     pg.connect(connectionString, function(err, client, done){
       if(err) console.log(err);
       
@@ -258,7 +259,9 @@ app.get('/about', function (req,res){
   res.render('about.jade', {title : 'About Us'});
 });
 
-
+app.get('/bettercausepage', function (req,res){
+  res.render('bettercausepage.jade', {title : 'Better Causes'});
+});
 
 
 
