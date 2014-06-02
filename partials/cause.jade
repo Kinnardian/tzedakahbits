@@ -3,9 +3,13 @@
     form(action='/donatetocause', method='POST')
         button.btn-mini.btn-primary.pull-right(type='submit') Donate
         input(type='hidden', value='#{rows[i].cause_id}', name='cause_id') 
-    p.causeName Cause: #{rows[i].cause_name}
+    .causeName #{rows[i].cause_name}
     p Organization: #{rows[i].organization}
     p Goal: #{rows[i].goal} BTC
     br
     .progress
-        .bar(style="width: 27%;")
+        .progress-bar(style="width: #{100/i+6}%;")
+    .stats
+        .stat #{(100/i+6).toFixed(2)}% Funded
+        .stat $ 0.00 Pledged
+        .stat 10 days to go

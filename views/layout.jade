@@ -9,28 +9,12 @@ html
         
         
         link(rel='stylesheet', href='/style/style.css', type='text/css')
-        link(rel='stylesheet', href='/style/css/bootstrap.css', type='text/css')
-        script(src='//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js')
-        script(type='text/javascript', charset='utf-8', src='/js/bootstrap.js')
+        link(rel='stylesheet', href='/bootstrap/css/bootstrap.min.css', type='text/css')
+        link(rel='stylesheet', href='//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css')
+        //script(src='//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js')
+        script(type='text/javascript', charset='utf-8', src='/bootstrap/js/bootstrap.min.js')
 
         script(type='text/javascript')
             $(#donateModalToggle).click(function (){$("#donateModal").modal();});      
-    body.beige
-        
-        block cause
 
-        block main
-        block bitcoin
-
-        footer
-            .navbar.navbar-fixed-bottom
-                .navbar-inner
-                    ul.nav
-                        li.brand: a(href='/') TzedakahBits
-                        li: a(href='/newcause') Add a cause
-                        li: a(href='/about') About
-                        li: a(href='/causes') Causes
-                        li: a(href='/donate') Volunteer
-                        li: a(href='/donate') Donate
-                        li: a(href='/bitcoin') What is Bitcoin?
-        
+    block main

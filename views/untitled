@@ -1,0 +1,20 @@
+//about tzedakahbits
+extends layout
+block main
+    body
+        
+
+                            
+        .inyoface
+            img.center(src="/img/TzedakahLogo.png")
+            h1 Donate Bitcoin to your favorite Jewish Charity
+        
+        h1 Tzedakahbits lets you donate bitcoin do to your favorite jewish charities
+        
+        h2 Why donate bitcoin? 
+        h3 Bitcoin is easier to send than other currencies
+        h3 It's open so every bit of tzedakah you give is publicy auditble
+        h3 It's global
+        h3 It can be given at a much lower cost than traditional currencies.
+        h3 It can be raised quickly in an emergency
+        include /partials/nav.jade

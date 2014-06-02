@@ -1,0 +1,27 @@
+// Staff Pick Template 
+//  .container
+//      .pull-left
+//      .pull-right 
+//          | Cause: #{rows[i].cause_name}
+//          | Organization: #{rows[i].organization}
+//          | Goal: #{rows[i].goal} BTC
+//          br
+//          .progress
+//              .bar(style="width: 27%;")
+//
+
+#staffpickcontainer
+    .row
+            .col-md-2
+            .pull-left.col-md-4
+                h2 Staff Pick:
+                img(src='/img/muskbama.jpg',style='width:80%')
+            .col-md-4.staffpickinfo
+                h3 Cause: Califonia Dreams
+
+                h3 Organization: Startup Nation
+
+                h3 Goal: All BTC
+                br
+                .progress
+                    .progress-bar(style="width: 27%;")

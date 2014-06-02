@@ -1,22 +1,31 @@
+//tzedakabits/donate.jade
 extends layout
 block main
-	img(src="/img/TzedakahLogo.png")
-	.container
-		h1 Volunteer for TzedakahBits
-		p Things you could do
-		ul
-			li Improve the site
-			li Run the site
-			li Build an organization
-			li Lead the movement to transform global philanthropy
-		h1 Donate to TzedakahBits
-		p Bitcoin Address: 31uEbMgunupShBVTewXjtqbBv5MndwfXhb Not the real address!!!
-		p What we need money for:
-		ul
-			li Hosting
-			li Secure storage
-			li Someone to keep the site running (*)
+	body
+		#donate_wrapper
+			#sidebar.col-md-2
+				img(src="/img/TzedakahLogo.png")
+			
+			#donatemain.col-md-10
+				.container
+					include /partials/nav.jade
+				h1 Volunteer for TzedakahBits
+				p Things you could do
+				ul
+					li Improve the site
+					li Run the site
+					li Build an organization
+					li Lead the movement to transform global philanthropy
+				h1 Donate to TzedakahBits
+				p Bitcoin Address: 31uEbMgunupShBVTewXjtqbBv5MndwfXhb Not the real address!!!
+				p What we need money for:
+				ul
+					li Hosting
+					li Secure storage
+					li Someone to keep the site running (*)
 
-		p Want to contribute in another way? contact 
-			a info@TzedakahBits.org 
-			*Interested? sign up here
+				p Want to contribute in another way? contact 
+					a info@TzedakahBits.org 
+					*Interested? sign up here
+		
+		include /partials/footer.jade

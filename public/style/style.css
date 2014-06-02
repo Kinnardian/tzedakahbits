@@ -1,35 +1,55 @@
+html,body{
+	height: 100%;
+}
 .brand{padding:1px 20px 1px ;}
 .do{position:relative;text-align:center;}
 .center{margin-right:auto;margin-left:auto;width:300px;}
 #cause1{border-right:1px solid blue;}
 #cause3{border-left:1px solid blue;}
-.cause{height:150px;}
+.cause{height:150px;border:solid 2px beige;margin:1%;padding:1%;}
 .causeinfo ul{style:none;}
-#paper{
-	background-color:beige;
-	padding:1%;
-	margin-right: 5%;
+.contributions{width:70%;}
+
+.navlogo{
+	width: 5%;
 }
 
-#wrapper{
-	margin:3%;
+.centered{
+	margin-right: auto;
+	margin-left: auto;
+	text-align: center;
 }
 
-#causeDescription{
-	margin-left:0px;
+
+footer{
+	background-color: #00466d;
+	color: beige;
+	position: relative;
+	bottom: 0%;
 }
 
-#causepage-causename{
-	margin-left:0px;
+#bitcoin{
+	background-color: beige;
 }
 
-#howitsdoing{
-	position:relative;
-	top:-60px;
-	padding-left: 2%;
-	border-left: 1px solid black;
+#donate_wrapper{
+	padding: 5%;
+	height: 100%;
 }
 
-#tzedakahlogo{
-width:20%;
+#sidebar{
+
+border-right: #00466d;
+height: 100%;
+}
+
+.bluehalf{
+	background-color: #0077B9;
+}
+.beigehalf{
+	background-color: beige;
+}
+#donatemain{
+	background-color: beige;
+	
 }

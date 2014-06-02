@@ -15,7 +15,7 @@ var pg = require('pg');
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 app.set('view options', { layout: false });
-app.locals.basedir = '/Users/Kinnard/Desktop/Projects/tzedakahbits/';
+app.locals.basedir = '/Users/Kinnard/Desktop/Projects/tzedakahbits2/';
 
 
 app.configure( function(){
@@ -24,7 +24,7 @@ app.configure( function(){
   app.use(lessMiddleware({ 
     src: __dirname + '/src/less',
     dest: __dirname + '/public/style',
-    prefix: "/style",
+    prefix: '/style',
     compress: true
   }))
   app.use(express.static(__dirname + '/public'))
@@ -245,6 +245,9 @@ app.post('/donatetocause', function (req,res){
 
 });
 
+app.get('/mycontributions', function (req,res){
+  res.render('mycontributions.jade', {title : 'My Contributions'});
+});
 
 app.get('/donate', function (req,res){
   res.render('donate.jade', {title : 'Donate'});
@@ -266,4 +269,4 @@ app.get('/bettercausepage', function (req,res){
 
 
 
-app.listen(4900);
+app.listen(4901);
