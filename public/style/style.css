@@ -6,8 +6,13 @@ html,body{
 .center{margin-right:auto;margin-left:auto;width:300px;}
 #cause1{border-right:1px solid blue;}
 #cause3{border-left:1px solid blue;}
-.cause{height:150px;border:solid 2px beige;margin:1%;padding:1%;}
+.cause{border:solid 1px beige;margin:1%;padding:3%; background-color: #f7f7f7;}
 .causeinfo ul{style:none;}
+.causeName{
+	text-align: center;
+	font-weight: bold;
+	font-size: 18pt;
+}
 .contributions{width:70%;}
 
 .navlogo{
@@ -20,20 +25,32 @@ html,body{
 	text-align: center;
 }
 
-
+#staffpickcontainer{
+	background-color: beige;
+	padding: 3%;
+}
+.staffpickinfo{
+	height: 100%;
+	padding-top: 5%;
+}
 footer{
 	background-color: #00466d;
 	color: beige;
 	position: relative;
 	bottom: 0%;
+	margin-top: 1%;
 }
 
+#footnav,#footsocial{
+	border-right: 2px solid beige;
+	padding: 1%;
+}
 #bitcoin{
 	background-color: beige;
 }
 
 #donate_wrapper{
-	padding: 5%;
+	
 	height: 100%;
 }
 
@@ -45,11 +62,32 @@ height: 100%;
 
 .bluehalf{
 	background-color: #0077B9;
+	color: white;
+	height: 100%;
 }
 .beigehalf{
 	background-color: beige;
+	height:100%;
+}
+#sidebar{
+	border-right: 2px dashed #0077B9;
+	padding-top: 5%;
 }
 #donatemain{
 	background-color: beige;
+	height: 100%;
+	padding: 5%;
 	
+}
+.causename{
+	text-align: center;
+	font-size: 18pt;
+	font-weight: bold;
+}
+.stats{
+	position: relative;
+	bottom:0%;
+}
+.stat{
+display: inline-block;
 }
