@@ -53,9 +53,9 @@ getCauses = function () {
     
     client.query('SELECT * FROM causes', function(err, result){
       //console.log(result.rows);
-      console.log('poo');
+      console.log('Current Causes:');
       currentCauses = result.rows;
-      //console.log(currentCauses);
+      console.log(result.rows);
       
       
     });
