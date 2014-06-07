@@ -3,8 +3,20 @@
 /*
  * Module dependencies
  */
+ //  Set ENVIRONMENT
+  //var dotenv = require('dotenv');
+  //dotenv.load();
+  var args = process.argv.slice(2);
+  console.log('process.argv:' + process.argv);
+  console.log('arg2nd:' + args[1]);
+  ENVIRONMENT = args[0]+'-'+args[1]; //for now
+  console.log('Env: ' + ENVIRONMENT);
+  
+  exports.env=ENVIRONMENT;
 
-var lessMiddleware = require('less-middleware');
+var env = require('./environment.env');
+console.log('Env Works?' + env.envworks)
+env.output_env();
 var express = require('express');
 var bitcoin = require('bitcoin');
 var app = express();
@@ -12,21 +24,17 @@ var pg = require('pg');
 
 
 
+
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 app.set('view options', { layout: false });
-app.locals.basedir = '/Users/Kinnard/Desktop/Projects/tzedakahbits2/';
+app.locals.basedir = env.basedir;
+console.log('Basedir: '+ app.locals.basedir);
 
 
 app.configure( function(){
 	
   app.use(express.logger('dev'))
-  app.use(lessMiddleware({ 
-    src: __dirname + '/src/less',
-    dest: __dirname + '/public/style',
-    prefix: '/style',
-    compress: true
-  }))
   app.use(express.static(__dirname + '/public'))
   app.use(express.bodyParser())
 });
@@ -41,7 +49,7 @@ var btcclient = new bitcoin.Client({
 });
 
 //Connect to Database
-var connectionString = 'pg://@localhost/tzedakahbits';
+var connectionString = env.connectionString;
 
 //Get Causes and load them into variable for use by the app
 var currentCauses;

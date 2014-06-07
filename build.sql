@@ -2,7 +2,7 @@
 
 CREATE TABLE causes (
 
-cause_id bigint NOT NULL default nextval('causes_cause_id_seq'::regclass),
+cause_id bigserial NOT NULL PRIMARY KEY,
 cause_name varchar(40) NOT NULL,
 goal integer,
 sponsor varchar(30),

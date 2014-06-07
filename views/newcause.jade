@@ -16,15 +16,25 @@ block main
                     h3 Need Help? We're here for you!
         .beigehalf.col-md-6
             h1 Change the world
-            form(action='newprojectpost', method='post').standardform
-                input.bigforminput(type='text', placeholder='Project Title', name='project_title')
+            form(action='newcause', method='post').standardform
+                input(type='text', placeholder='Cause Name', name='causeName')
                 br
                 br
-                input.bigforminput(type='text', placeholder='Project Goal', name='project_goal')
+                input(type='text', placeholder='Cause Goal', name='goal')
                 br
                 br
-                textarea.bigforminput(type='text', placeholder='Project Description', name='project_description', rows='10', cols='50' ) 
+                input(type='text', placeholder='Organization', name='organization')
                 br
-                input#learnmoresubmit(type='submit', value='Submit')
+                br
+                input(type='text', placeholder='Sponsor', name='sponsor')
+                br
+                br
+                input(type='text', placeholder='Your Email', name='submitterEmail')
+                br
+                br
+                textarea(type='text', placeholder='Project Description', name='project_description', rows='10', cols='50' )
+                br
+                br
+                button(type='submit', value='Submit') Submit
                 br
         include /partials/footer.jade
