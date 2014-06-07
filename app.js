@@ -60,6 +60,7 @@ getCauses = function () {
     if(err) console.log(err);
     
     client.query('SELECT * FROM causes', function(err, result){
+      if(err) console.log(err);
       //console.log(result.rows);
       console.log('Current Causes:');
       currentCauses = result.rows;
@@ -203,11 +204,11 @@ app.post('/newcause', function (req,res){
       
       console.log('This is r ' + r)
       
-      if (err) return console.log(err);
+      if (err) console.log(err);
       
       console.log('These are the Rows' + toString(result.rows[0]));
       btcclient.getNewAddress(function(err,address){
-        if (err) return console.log(err);
+        if (err) console.log(err);
         console.log('New Address' + address);
         var s = []
         s.push(address, result.rows[0].cause_id); //why does this work?
