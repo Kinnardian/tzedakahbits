@@ -41,10 +41,10 @@ app.configure( function(){
 
 
 var btcclient = new bitcoin.Client({
-  host: 'localhost',
-  port: 8333,
-  user: 'michael',
-  pass: 'shortassword',
+  host: auth.btchost,
+  port: auth.btcport,
+  user: auth.btcuser,
+  pass: auth.btcpassword,
 
 });
 
