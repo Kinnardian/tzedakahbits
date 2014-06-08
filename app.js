@@ -22,7 +22,7 @@ var bitcoin = require('bitcoin');
 var app = express();
 var pg = require('pg');
 
-
+var auth = require('/auth.js');
 
 
 app.set('views', __dirname + '/views');
