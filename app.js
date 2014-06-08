@@ -22,7 +22,7 @@ var bitcoin = require('bitcoin');
 var app = express();
 var pg = require('pg');
 
-var auth = require('/auth.js');
+var auth = require('./auth.js');
 
 
 app.set('views', __dirname + '/views');
@@ -81,7 +81,7 @@ var causeContainer = new Object();
 
 getBalance = function (callback){
   btcclient.getBalance('*', 0, function(err, balance) {
-    if (err) return console.log(err);
+    if (err) return console.log('Bitcoin:' + err);
     if (lastbalance != balance || typeof lastbalance == 'undefined'){
       console.log('Last Balance:' + lastbalance);
       lastbalance = balance;
