@@ -21,6 +21,7 @@ var express = require('express');
 var bitcoin = require('bitcoin');
 var app = express();
 var pg = require('pg');
+var shell = require('shelljs');
 
 var auth = require('./auth.js');
 
