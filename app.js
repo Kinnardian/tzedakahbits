@@ -213,11 +213,19 @@ app.post('/newcause', function (req,res){
         console.log('New Address' + address);
         var s = []
         s.push(address, result.rows[0].cause_id); //why does this work?
-        client.query('UPDATE causes SET address = ($1) WHERE cause_id = $2', s, function(err)
-          {if (err) console.log(err);}
-        );
+        client.query('UPDATE causes SET address = ($1) WHERE cause_id = $2', s, function(err){
+            if (err) console.log(err);
+            
+            shell.exec('./bash/backup.sh',function(err){
+              if (err) console.log(err);
+            });
+        
+        });
+
         res.render('causepage.jade', {rows: result.rows[0], address: address});
         return address;
+        
+
         
       });      
       
