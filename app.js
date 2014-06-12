@@ -78,7 +78,38 @@ getCauses();
 
 var lastbalance;
 
+getacausebyId = function (cause_id, callback) {
+    
+    var r = [];
+    r.push(cause_id);
+    var rows;
+    
+    return pg.connect(connectionString, function(err, client, done){
+  
+      if(err) console.log(err);
+    
+      rows = client.query('SELECT * FROM causes WHERE cause_id = $1', r, function(err, result){
+      if(err) console.log(err);
+      
+      console.log('poopoo');
+      //console.log(result.rows);
+      causeContainer.cause=result.rows;
+      console.log(causeContainer.cause);
+      if (typeof callback=='function') callback();
+      
+      
+      });
+  
+    });
+};
+//TODO: getcause_by_name, get_cause_by_addr
 var causeContainer = new Object();
+causeContainer.get = getacausebyId;
+
+
+
+
+
 
 getBalance = function (callback){
   btcclient.getBalance('*', 0, function(err, balance) {
@@ -140,38 +171,15 @@ updateCauses = function (){
     });
 };
 
-app.get('/caligula',updateCauses);
+app.get('/updateCauses',updateCauses);
 
-getacausebyId = function (cause_id, callback) {
-    
-    var r = [];
-    r.push(cause_id);
-    var rows;
-    
-    return pg.connect(connectionString, function(err, client, done){
-  
-      if(err) console.log(err);
-    
-      rows = client.query('SELECT * FROM causes WHERE cause_id = $1', r, function(err, result){
-      if(err) console.log(err);
-      
-      console.log('poopoo');
-      //console.log(result.rows);
-      causeContainer.cause=result.rows;
-      console.log(causeContainer.cause);
-      if (typeof callback=='function') callback();
-      
-      
-      });
-  
-    });
-};
+
 
 
 console.log(typeof btcclient.getBalance);
 console.log(typeof btcclient.getBalance('*'));
 
-causeContainer.get = getacausebyId;
+
 
 
 
@@ -244,14 +252,14 @@ res.render('pageofcauses.jade', {title : 'Causes', rows: currentCauses});
 });
 
 
-app.post('/donatetocause', function (req,res){
+app.post('/causepage', function (req,res){
 
-  console.log(req.body.cause_id);
+  console.log('Someone is going to ' + req.body.cause_name + '\'s causepage.');
   causeContainer.get(req.body.cause_id, function(){
     
-    res.render('causepage.jade', {title : 'Cause', rows: causeContainer.cause[0]})
+    res.render('causepage.jade', {title : 'Cause', cause: causeContainer.cause[0]})
     
-    console.log(causeContainer.cause);
+    console.log('Checking what get passed to cause page: ' + JSON.stringify(causeContainer.cause[0]));
     
     btcclient.getBalance(causeContainer.cause[0].address, 0, function(err, balance) {
       if (err) return console.log(err);
@@ -280,8 +288,8 @@ app.get('/about', function (req,res){
   res.render('about.jade', {title : 'About Us'});
 });
 
-app.get('/bettercausepage', function (req,res){
-  res.render('bettercausepage.jade', {title : 'Better Causes'});
+app.get('/causepage', function (req,res){
+  res.render('causepage.jade', {title : 'Better Causes'});
 });
 
 

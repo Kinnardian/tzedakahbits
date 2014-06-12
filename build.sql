@@ -1,4 +1,4 @@
-//Postgres Stuff
+--Postgres Stuff
 
 CREATE TABLE causes (
 
