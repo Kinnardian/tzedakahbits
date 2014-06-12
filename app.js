@@ -199,21 +199,18 @@ app.get('/newcause', function (req,res){
 
 app.post('/newcause', function (req,res){
   
-  console.log(req.body);
+  if (err) console.log(err);
   
   var r = [];
   
   r.push(req.body.causeName, req.body.goal, req.body.organization, req.body.sponsor, req.body.submitterEmail);
-  console.log(r);
 
   
   client = pg.connect(connectionString, function(err, client, done){
     if(err) console.log(err);
     client.query('INSERT INTO causes (cause_name, goal, organization, sponsor, submitter) VALUES ($1,$2,$3,$4,$5) RETURNING *', r, function(err, result){
       
-      console.log('This is r ' + r)
-      
-      if (err) console.log(err);
+      if (err) console.log('Error inserting new cause ' + err);
       
       console.log('These are the Rows' + toString(result.rows[0]));
       btcclient.getNewAddress(function(err,address){
@@ -231,7 +228,7 @@ app.post('/newcause', function (req,res){
         });
 
         res.render('causepage.jade', {rows: result.rows[0], address: address});
-        return address;
+        
         
 
         
