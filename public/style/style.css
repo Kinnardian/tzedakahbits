@@ -14,8 +14,13 @@ html,body{
 }
 .contributions{width:70%;}
 
+#nav{
+	padding: .5%;
+	margin-bottom: 0;
+}
 .navlogo{
-	width: 5%;
+	width: 20%;
+	margin-right: 2%;
 }
 
 .centered{
@@ -73,7 +78,7 @@ footer{
 
 #donate_wrapper{
 	
-	height: 80%;
+	height: 100%;
 }
 
 #sidebar{
