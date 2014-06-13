@@ -199,44 +199,44 @@ app.get('/newcause', function (req,res){
 
 app.post('/newcause', function (req,res){
   
-  if (err) console.log(err);
-  
   var r = [];
-  
   r.push(req.body.causeName, req.body.goal, req.body.organization, req.body.sponsor, req.body.submitterEmail);
-
   
-  client = pg.connect(connectionString, function(err, client, done){
-    if(err) console.log(err);
-    client.query('INSERT INTO causes (cause_name, goal, organization, sponsor, submitter) VALUES ($1,$2,$3,$4,$5) RETURNING *', r, function(err, result){
-      
-      if (err) console.log('Error inserting new cause ' + err);
-      
-      console.log('These are the Rows' + toString(result.rows[0]));
-      btcclient.getNewAddress(function(err,address){
-        if (err) console.log(err);
-        console.log('New Address' + address);
-        var s = []
-        s.push(address, result.rows[0].cause_id); //why does this work?
-        client.query('UPDATE causes SET address = ($1) WHERE cause_id = $2', s, function(err){
-            if (err) console.log(err);
-            
-            shell.exec('./bash/backup.sh',function(err){
-              if (err) console.log(err);
-            });
-        
-        });
+  btcclient.getNewAddress(function(err,address){
+        if (err){ 
+          console.log('Error Getting Address for New Cause ' + err);
+          res.render('newcauseerror',{title : 'New Cause Error'});
+        }
+        else{
+          console.log('New Address' + address);
+          r.push(address);          
+          client = pg.connect(connectionString, function(err, client, done){
+            if (err){ 
+              console.log('Error Connecting to Database: ' + err);
+              res.render('newcauseerror',{title : 'New Cause Error'});
+            }
+            else{
+              client.query('INSERT INTO causes (cause_name, goal, organization, sponsor, submitter,address) VALUES ($1,$2,$3,$4,$5,$6) RETURNING *', r, function(err, result){
+              
+                if (err){
+                  console.log('Error inserting new cause ' + err);
+                  res.render('newcauseerror',{title : 'New Cause Error'});
+                } 
+                else{
+                  res.render('causepage.jade', {cause: result.rows[0]});
+                
+                  console.log('This cause was just inserted: ' + JSON.stringify(result.rows[0]));
+                  shell.exec('./bash/backup.sh',function(err){
+                    if (err) console.log('Error Backing Up Database ' + err);
+                  });
+                }
 
-        res.render('causepage.jade', {rows: result.rows[0], address: address});
-        
-        
-
-        
-      });      
-      
-    
-    });    
-  });
+              });
+            }
+          });
+        }  
+  }); 
+  
   
 });
 
