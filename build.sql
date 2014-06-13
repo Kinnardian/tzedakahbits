@@ -4,11 +4,11 @@ CREATE TABLE causes (
 
 cause_id bigserial NOT NULL PRIMARY KEY,
 cause_name varchar(40) NOT NULL,
-goal integer,
+goal integer NOT NULL,
 sponsor varchar(30),
 organization varchar(30),
-submitter varchar(30),
-address varchar(34),
-balance numeric
+submitter varchar(30) NOT NULL,
+address varchar(34) NOT NULL,
+balance numeric NOT NULL DEFAULT 0
 
 );
