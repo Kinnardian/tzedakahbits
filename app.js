@@ -200,7 +200,7 @@ app.get('/newcause', function (req,res){
 app.post('/newcause', function (req,res){
   
   var r = [];
-  r.push(req.body.causeName, req.body.goal, req.body.organization, req.body.sponsor, req.body.submitterEmail);
+  r.push(req.body.causeName, req.body.tagline, req.body.goal, req.body.organization, req.body.sponsor, req.body.submitterEmail, req.body.cause_description);
   
   btcclient.getNewAddress(function(err,address){
         if (err){ 
@@ -216,7 +216,7 @@ app.post('/newcause', function (req,res){
               res.render('newcauseerror',{title : 'New Cause Error'});
             }
             else{
-              client.query('INSERT INTO causes (cause_name, goal, organization, sponsor, submitter,address) VALUES ($1,$2,$3,$4,$5,$6) RETURNING *', r, function(err, result){
+              client.query('INSERT INTO causes (cause_name, tagline, goal, organization, sponsor, submitter, address, cause_description ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *', r, function(err, result){
               
                 if (err){
                   console.log('Error inserting new cause ' + err);
@@ -236,8 +236,7 @@ app.post('/newcause', function (req,res){
           });
         }  
   }); 
-  
-  
+    
 });
 
 
