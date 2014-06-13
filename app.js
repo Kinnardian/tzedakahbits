@@ -224,7 +224,7 @@ app.post('/newcause', function (req,res){
                 } 
                 else{
                   res.render('causepage.jade', {cause: result.rows[0]});
-                
+                  updateCauses();
                   console.log('This cause was just inserted: ' + JSON.stringify(result.rows[0]));
                   shell.exec('./bash/backup.sh',function(err){
                     if (err) console.log('Error Backing Up Database: ' + err);
