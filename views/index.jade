@@ -1,20 +1,21 @@
 extends layout
 block main
     body
-        include /partials/nav.jade
+        #pushfooterdownakahtmlsucks
+            include /partials/nav.jade
 
-                            
-        .inyoface.centered
-            h1 Donate Bitcoin to Your Favorite Charities
+                                
+            .inyoface.centered
+                h1 Donate Bitcoin to Your Favorite Charities
+            
+            include /partials/staffpick.jade
         
-        include /partials/staffpick.jade
-    
-        .container
-            h1.centered Check out these Awesome Causes! 
+            .container
+                h1.centered Check out these Awesome Causes! 
 
-            -for (var i=0; i< rows.length; i++){
+                -for (var i=0; i< rows.length; i++){
 
-                .col-md-4
-                    include /partials/cause.jade    
-            -}
+                    .col-md-4
+                        include /partials/cause.jade    
+                -}
         include /partials/footer.jade

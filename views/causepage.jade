@@ -3,27 +3,27 @@ extends layout
 block main
 
     body
-        include /partials/nav.jade
-        #causepagecontainer.container
-             
-            h1#causetitle.col-md-10 #{cause.cause_name}
-            #causepaper.col-md-10.col-md-offset-1
-                
-                #howitsdoing.pull-right.col-md-4
-                    h2  Raised: $#{cause.balance}
-                    h4  of $#{cause.goal} goal
+        #pushfooterdownakahtmlsucks
+            include /partials/nav.jade
+            #causepagecontainer.container
+                 
+                h1#causetitle.col-md-10 #{cause.cause_name}
+                #causepaper.col-md-10.col-md-offset-1
+                    
+                    #howitsdoing.pull-right.col-md-4
+                        h2  Raised: $#{cause.balance}
+                        h4  of $#{cause.goal} goal
 
-                    h3  Submitted by #{cause.submitter}
-                    button.btn-primary Donate!
+                        h3  Submitted by #{cause.submitter}
+                        button.btn-primary Donate!
 
 
-                .col-md-6
-                    h3.tagline #{cause.tagline}
-                    p  #{cause.cause_description}
-                    p 
-                    b Donate: 
-                        | #{cause.address}
-                    br
-                    button.btn-primary Report this cause
+                    .col-md-6
+                        h3.tagline #{cause.tagline}
+                        p  #{cause.cause_description}
+                        p 
+                        b Donate: #{cause.address}
+                        br
+                        button.btn-primary Report this cause
         
         include /partials/footer.jade

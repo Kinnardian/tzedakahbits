@@ -2,42 +2,43 @@
 extends layout
 block main
     body
-        include /partials/nav.jade
+        #pushfooterdownakahtmlsucks
+            include /partials/nav.jade
 
-        .bluehalf.col-md-6
-                    h1.mission Create a Cause
-                    h2
-                        ul
-                            li 1. Create Your Cause
-                            li 2. Tell your friends
-                            li 3. Get Funded
-                            li 4. Execute your project
-                            li 5. Share the results with the world
-                    h3 Need Help? We're here for you!
-        .beigehalf.col-md-6
-            h1 Change the world
-            form(action='newcause', method='post').standardform
-                input(type='text', placeholder='Cause Name', name='causeName')
-                br
-                br
-                input(type='text', placeholder='Tagline', name='tagline')
-                br
-                br
-                input(type='text', placeholder='Cause Goal', name='goal')
-                br
-                br
-                input(type='text', placeholder='Organization', name='organization')
-                br
-                br
-                input(type='text', placeholder='Sponsor', name='sponsor')
-                br
-                br
-                input(type='text', placeholder='Your Email', name='submitterEmail')
-                br
-                br
-                textarea(type='text', placeholder='Cause Description', name='cause_description', rows='10', cols='50' )
-                br
-                br
-                button(type='submit', value='Submit') Submit
-                br
+            .bluehalf.col-md-6
+                        h1.mission Create a Cause
+                        h2
+                            ul
+                                li 1. Create Your Cause
+                                li 2. Tell your friends
+                                li 3. Get Funded
+                                li 4. Execute your project
+                                li 5. Share the results with the world
+                        h3 Need Help? We're here for you!
+            .beigehalf.col-md-6
+                h1 Change the world
+                form(action='newcause', method='post').standardform
+                    input(type='text', placeholder='Cause Name', name='causeName')
+                    br
+                    br
+                    input(type='text', placeholder='Tagline', name='tagline')
+                    br
+                    br
+                    input(type='text', placeholder='Cause Goal', name='goal')
+                    br
+                    br
+                    input(type='text', placeholder='Organization', name='organization')
+                    br
+                    br
+                    input(type='text', placeholder='Sponsor', name='sponsor')
+                    br
+                    br
+                    input(type='text', placeholder='Your Email', name='submitterEmail')
+                    br
+                    br
+                    textarea(type='text', placeholder='Cause Description', name='cause_description', rows='10', cols='50' )
+                    br
+                    br
+                    button(type='submit', value='Submit') Submit
+                    br
         include /partials/footer.jade

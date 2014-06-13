@@ -39,9 +39,17 @@ html,body{
 	height: 100%;
 	padding-top: 5%;
 }
+#pushfooterdownakahtmlsucks{
+	min-height: 100%;
+	margin-bottom: 142px;
+}
+#pushfooterdownakahtmlsucks:after{
+	height: 142px;
+}
 footer{
 	background-color: #00466d;
 	color: beige;
+	height: 142px;
 	position: relative;
 	bottom: 0%;
 }
