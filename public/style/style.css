@@ -71,6 +71,17 @@ footer{
 
 #footnav,#footsocial{
 	border-right: 5px solid beige;
+
+}
+#footnav ul{
+	list-style: none;
+}
+#footsocial ul{
+	list-style: none;
+}
+.listhead{
+	font-weight: bold;
+	margin-bottom: 3%;
 }
 #centerlogo{
 	padding-top: 1%;
