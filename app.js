@@ -208,7 +208,7 @@ app.post('/newcause', function (req,res){
           res.render('newcauseerror',{title : 'New Cause Error'});
         }
         else{
-          console.log('New Address' + address);
+          console.log('New Address ' + address);
           r.push(address);          
           client = pg.connect(connectionString, function(err, client, done){
             if (err){ 
@@ -216,10 +216,10 @@ app.post('/newcause', function (req,res){
               res.render('newcauseerror',{title : 'New Cause Error'});
             }
             else{
-              client.query('INSERT INTO causes (cause_name, tagline, goal, organization, sponsor, submitter, address, cause_description ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *', r, function(err, result){
+              client.query('INSERT INTO causes (cause_name, tagline, goal, organization, sponsor, submitter, cause_description, address ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *', r, function(err, result){
               
                 if (err){
-                  console.log('Error inserting new cause ' + err);
+                  console.log('Error inserting new cause: ' + err);
                   res.render('newcauseerror',{title : 'New Cause Error'});
                 } 
                 else{
