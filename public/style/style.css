@@ -45,7 +45,7 @@ html,body{
 	height: 100%;
 }
 #pushfooterdownakahtmlsucks:after{
-	height: 142px;
+	/*height: 142px;*/
 
 }
 footer{
@@ -79,10 +79,10 @@ footer{
 #sidebar{
 
 border-right: #00466d;
-height: 80%;
+height: 100%;
 }
 #donate_main{
-	height: 80%;
+	height: 100%;
 }
 
 .bluehalf{
