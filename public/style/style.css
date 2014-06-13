@@ -137,10 +137,18 @@ height: 100%;
 .stats{
 	position: relative;
 	bottom:0%;
+	
+}
+
+.staffpickstats{
+	margin: 2%;
+	padding: 1%;
 }
 .stat{
-display: inline-block;
+	display: inline-block;
+	margin: 1%;
 }
+
 .standardform input,textarea[type='text']{
 	border-radius: 3px;
 	border-color: black;
