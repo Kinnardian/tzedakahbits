@@ -135,6 +135,7 @@ height: 100%;
 	font-weight: bold;
 }
 .stats{
+	border-top: 2px dashed #0077B9;
 	position: relative;
 	bottom:0%;
 	
@@ -143,6 +144,7 @@ height: 100%;
 .staffpickstats{
 	margin: 2%;
 	padding: 1%;
+	border-bottom: 1px solid black;
 }
 .stat{
 	display: inline-block;
