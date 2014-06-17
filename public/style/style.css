@@ -5,7 +5,9 @@ html,body{
 .do{position:relative;text-align:center;}
 .center{margin-right:auto;margin-left:auto;width:300px;}
 
-.cause{border:solid 1px beige;margin:1%;padding:3%; background-color: #f7f7f7;}
+.cause{border:solid 1px black;margin:1%;padding:3%; background-color: white;
+	border-radius: 2px;
+}
 .causeinfo ul{style:none;}
 .causeName{
 	text-align: center;
@@ -172,8 +174,13 @@ height: 100%;
 .staffpickstats{
 	margin: 2%;
 	padding: 1%;
-	border-bottom: 1px solid black;
+
+	
 }
+.bottomed{
+	border-bottom: 2px dashed #0077B9;
+}
+
 .stat{
 	display: inline-block;
 	margin: 1%;

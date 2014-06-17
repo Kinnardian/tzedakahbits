@@ -16,7 +16,7 @@
     .progress
         .progress-bar(style="width: #{rows[i].balance/100}%;")
     .stats.col-md-12
-        .stat.col-md-3 #{(100/6).toFixed(2)}%
+        .stat.col-md-3 #{(rows[i].balance/100).toFixed(2)}%
             br
             strong Funded 
         .stat.col-md-4 B&#8422; #{rows[i].balance}
