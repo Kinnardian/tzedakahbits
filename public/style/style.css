@@ -75,6 +75,9 @@ footer{
 	bottom: 0%;
 	border-top: 3px dashed #beige;
 }
+footer a{
+	color: beige;
+}
 .footroom{
 	margin-bottom: 1%;
 }
