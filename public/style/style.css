@@ -81,6 +81,9 @@ footer a{
 .footroom{
 	margin-bottom: 1%;
 }
+.footcontainer{
+	height: 100%;
+}
 
 #footnav,#footsocial{
 	border-right: 5px solid beige;
@@ -88,6 +91,9 @@ footer a{
 }
 #footnav ul{
 	list-style: none;
+}
+#footsocial{
+	height: 100%;
 }
 #footsocial ul{
 	list-style: none;
