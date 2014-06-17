@@ -26,7 +26,9 @@ html,body{
 	width: 20%;
 	margin-right: 2%;
 }
-
+.social-nav-box a{
+	margin: 1%;
+}
 .centered{
 	margin-right: auto;
 	margin-left: auto;
