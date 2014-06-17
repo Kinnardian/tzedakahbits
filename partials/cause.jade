@@ -1,5 +1,5 @@
 
-.cause
+.cause.col-md-12
     form(action='/causepage', method='POST')
         button.btn-mini.btn-primary.pull-right(type='submit') Donate
         input(type='hidden', value='#{rows[i].cause_id}', name='cause_id') 
@@ -8,13 +8,14 @@
     p.tagline #{rows[i].tagline}
     p 
         strong Organization: 
-        #{rows[i].organization}
-    p strong Goal: 
-        #{rows[i].goal} BTC
+        | #{rows[i].organization}
+    p 
+        strong Goal: 
+        | #{rows[i].goal} BTC
     br
     .progress
-        .progress-bar(style="width: #{100/i+6}%;")
-    .stats
-        .stat #{(100/6).toFixed(2)}% Funded 
-        .stat B&#8422; 0.00 Pledged
-        .stat 30 days to go
+        .progress-bar(style="width: #{rows[i].balance/100}%;")
+    .stats.col-md-12
+        .stat.col-md-4 #{(100/6).toFixed(2)}% Funded 
+        .stat.col-md-4 B&#8422; 0.00 Pledged
+        .stat.col-md-3 30 Days to Go
