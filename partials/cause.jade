@@ -6,12 +6,15 @@
         input(type='hidden', value='#{rows[i].cause_name}', name='cause_name')
     .causeName #{rows[i].cause_name}
     p.tagline #{rows[i].tagline}
-    p Organization: #{rows[i].organization}
-    p Goal: #{rows[i].goal} BTC
+    p 
+        strong Organization: 
+        #{rows[i].organization}
+    p strong Goal: 
+        #{rows[i].goal} BTC
     br
     .progress
         .progress-bar(style="width: #{100/i+6}%;")
     .stats
         .stat #{(100/6).toFixed(2)}% Funded 
         .stat B&#8422; 0.00 Pledged
-        .stat 10 days to go
+        .stat 30 days to go
