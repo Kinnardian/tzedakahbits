@@ -16,6 +16,12 @@
     .progress
         .progress-bar(style="width: #{rows[i].balance/100}%;")
     .stats.col-md-12
-        .stat.col-md-4 #{(100/6).toFixed(2)}% Funded 
-        .stat.col-md-4 B&#8422; 0.00 Pledged
-        .stat.col-md-3 30 Days to Go
+        .stat.col-md-3 #{(100/6).toFixed(2)}%
+            br
+            strong Funded 
+        .stat.col-md-4 B&#8422; #{rows[i].balance}
+            br 
+            strong Pledged
+        .stat.col-md-4.finalstat 30
+            br 
+            strong Days to Go
