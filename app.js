@@ -274,6 +274,9 @@ app.get('/mycontributions', function (req,res){
 app.get('/donate', function (req,res){
   res.render('donate.jade', {title : 'Donate'});
 });
+app.get('/volunteer', function (req,res){
+  res.render('donate.jade', {title : 'Volunteer'});
+});
 
 
 app.get('/bitcoin', function (req,res){
