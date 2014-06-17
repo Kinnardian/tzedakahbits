@@ -177,9 +177,16 @@ height: 100%;
 
 	
 }
+.staffpickinfo h3{
+	margin-bottom: 2%;
+}
+#staffpickcontainer > div{
+margin-bottom: 3%;
+}
 .bottomed{
 	border-bottom: 2px dashed #0077B9;
 }
+
 
 .stat{
 	display: inline-block;
@@ -190,6 +197,9 @@ height: 100%;
 	padding-right: 5px !important;
 }
 
+.organizationt{
+	font-weight: normal !important;
+}
 .standardform input,textarea[type='text']{
 	border-radius: 3px;
 	border-color: black;
