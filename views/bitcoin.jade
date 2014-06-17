@@ -3,20 +3,19 @@ extends layout
 block main
 	body
 		#pushfooterdownakahtmlsucks
-			#centerlogo.col-md-12.centered
+			#bitcointopper.col-md-12.centered
 				.container
 					include /partials/nav.jade
-			#bitcoin.col-md-12.centered
-				
-				
-				h1 What is Bitcoin?
-				p Bitcoin is a digital currency that enables instant payments from anyone, anywhere over the internet.
-				p You can send bitcoin to and receive bitcoin at 
-					b Bitcoin Addresses 
-					| like this one which belongs to Tzedakabits: 
-				a(href='http://bitcoin.org') Learn More.
-				br
-				iframe(width="560",height="315",src="//www.youtube.com/embed/Um63OQz3bjo?rel=0",frameborder="0",allowfullscreen)
+			#bitcoin.col-md-12
+				.col-md-6
+					h1 What is Bitcoin?
+					p Bitcoin is a digital currency that enables instant payments from anyone, anywhere over the internet.
+					p You can send bitcoin to and receive bitcoin at 
+						b Bitcoin Addresses 
+						| like this one which belongs to Tzedakabits: 
+					a(href='http://bitcoin.org') Learn More.
+				.col-md-6
+					iframe(width="560",height="315",src="//www.youtube.com/embed/Um63OQz3bjo?rel=0",frameborder="0",allowfullscreen)
 
 		
 		include /partials/footer.jade

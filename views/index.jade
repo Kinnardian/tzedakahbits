@@ -12,10 +12,13 @@ block main
         
             #causes.container
                 h1.centered Check out these Awesome Causes! 
-
+                hr.causerow
                 -for (var i=0; i< rows.length; i++){
-
+                     -if (i%3==0 & i>0){
+                        hr.causerow
+                    -}
                     .col-md-4
                         include /partials/cause.jade    
+               
                 -}
         include /partials/footer.jade
