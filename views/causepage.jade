@@ -24,6 +24,7 @@ block main
                         p 
                         b Donate: #{cause.address}
                         br
-                        button.btn-primary Report this cause
+                        a(href='mailto:info@bitbox.mx?subject=Reporting%20Cause#{cause.cause_id}:%20#{cause.cause_name}')
+                            button.btn-primary Report this cause
         
         include /partials/footer.jade
