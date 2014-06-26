@@ -148,6 +148,10 @@ height: 100%;
 	border-right: 2px dashed #0077B9;
 	padding-top: 5%;
 }
+.qr{
+	border: 1px solid black;
+	margin-bottom: 3%;
+}
 #donatemain{
 	background-color: beige;
 	height: 100%;

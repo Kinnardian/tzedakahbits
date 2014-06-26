@@ -16,6 +16,8 @@ block main
 
                         h3  Submitted by #{cause.submitter}
                         a(href='bitcoin:#{cause.address}')
+                            img.qr(src="http://chart.apis.google.com/chart?cht=qr&chld=Q%7C2&chs=200&chl=<%=#{cause.address}%>")
+                        a(href='bitcoin:#{cause.address}')
                             button.btn-primary Donate!
 
 
