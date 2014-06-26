@@ -15,14 +15,16 @@ block main
                         h4  of B&#8422 #{cause.goal} goal
 
                         h3  Submitted by #{cause.submitter}
-                        button.btn-primary Donate!
+                        a(href='bitcoin:#{cause.address}')
+                            button.btn-primary Donate!
 
 
                     .col-md-6
                         h3.tagline #{cause.tagline}
                         p  #{cause.cause_description}
                         p 
-                        b Donate: #{cause.address}
+                        b Donate: 
+                            a(href='bitcoin:#{cause.address}') #{cause.address}
                         br
                         a(href='mailto:info@bitbox.mx?subject=Reporting%20Cause#{cause.cause_id}:%20#{cause.cause_name}')
                             button.btn-primary Report this cause
