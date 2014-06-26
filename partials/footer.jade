@@ -16,7 +16,7 @@ footer.col-md-12
 				li 
 					a(href='/contact') Contact
 		#footsocial.col-md-3
-			p 
+ 
 			ul	
 				li.listhead Support Us
 				li
@@ -31,6 +31,8 @@ footer.col-md-12
 					a(href='/volunteer') Volunteer
 		#newsletter.col-md-4
 			p Sign up for our newsletter
-			form.standardform
-				input(type='text', placeholder='Your Email Address', name='email')
+			form.standardform(action='http://eepurl.com/XPW8z', method='get')
+				input#newsletteremail(type='text', placeholder='Your Email Address', name='email')
+				a(href='http://eepurl.com/XPW8z')
+					button.submit Submit
 		
