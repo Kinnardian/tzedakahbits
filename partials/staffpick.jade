@@ -11,23 +11,29 @@
 //
 
 #staffpickcontainer.col-md-12
-                .col-md-2
-                .pull-left.col-md-4
-                    h2 Staff Pick: Califonia Dreams
-                    img(src='/img/muskbama.jpg',style='width:80%')
+                .col-md-1
+                .col-md-5
+                    h1 Staff Pick:
+                    #staffpickphoto.col-md-12
+                            h2.centered Bitcoins for Ronald McDonald House of Ann Arbor
+                        
+                            img.centered(src='/img/RonaldMcDonaldDads.jpg',width='90%', style='display:block')
+                .col-md-1
                 #staffpickinfo.col-md-4
-                    h3.tagline Connecting Startup Students with the Startup Nation
+                    .row
+                        h3.tagline Donate bitcoin to a very deserving cause!
 
-                    h3 Organization:
-                        span.organizationt  Startup Nation
+                        h3 Organization:
+                            span.organizationt  Ronald McDonald House of Ann Arbor
 
-                    h3 Goal:
-                        span.organizationt  100 BTC 
-                    br
-                    .progress
-                        .progress-bar(style="width: 27%;")
+                
+                        h3 Goal:
+                            span.organizationt  6 BTC 
+                    .row
+                        .progress
+                            .progress-bar(style="width: 1%;")
                     .stats.col-md-12.bottomed
-                        .stat.staffpickstats.col-md-3 #{(100/6).toFixed(2)}%
+                        .stat.staffpickstats.col-md-3 1%
                             br
                             strong FUNDED
                         .stat.staffpickstats.col-md-3 B&#8422; 0.00
@@ -36,3 +42,7 @@
                         .stat.staffpickstats.finalstat.col-md-3 30
                             br 
                             strong DAYS to GO
+                    .col-md-12
+                        form(action='/causepage', method='POST')#staffpicklearnmore
+                            button.btn-lg.btn-primary.pull-right(type='submit').col-md-12 Learn More
+                            input(type='hidden', value='5', name='cause_id')
